@@ -29,13 +29,39 @@ class User {
         this.#password = password
     }
     
-    async read(id) {
+    async readAll() {
 
-        const query = id ? `SELECT id, firstName, lastName, email FROM users WHERE id = "${id}";` : "SELECT id, firstName, lastName, email FROM users;"
+        const query = "SELECT id, firstName, lastName, email FROM users;"
         
         try {
+            const results = await this.#query(query)
+            return results.length === 0 ? {message: "no results found"} : results
+        }
+        catch(err) {
+            return {error: err}
+        }
+    }
+
+    async readById(id) {
+
+        const query = `SELECT id, firstName, lastName, email FROM users WHERE id = "${id}";`
+
+        try {
             const result = await this.#query(query)
-            return result.length === 1 ? result[0] : result
+            return result.length === 1 ? result[0] : result.length === 0 ? {message: "no results found"} : result
+        }
+        catch(err) {
+            return {error: err}
+        }
+    }
+
+    async readByEmail(email) {
+
+        const query = `SELECT id, firstName, lastName, email FROM users WHERE email = "${email}";`
+
+        try {
+            const result = await this.#query(query)
+            return result.length === 1 ? result[0] : result.length === 0 ? {message: "no results found"} : result
         }
         catch(err) {
             return {error: err}
@@ -50,7 +76,7 @@ class User {
                 VALUES ("${this.#id}", "${this.#firstName}", "${this.#lastName}", "${this.#email}", "${this.#password}");`
             )
 
-            return await this.read(this.#id)
+            return await this.readById(this.#id)
         }
         catch(err) {
             return {error: err}
