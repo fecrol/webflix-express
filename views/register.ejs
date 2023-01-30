@@ -8,19 +8,28 @@
     <title>Register</title>
 </head>
 <body>
-    <div class="flex-container centre direction-column">
-        <h1>Register</h1>
-        <form action="/register" method="POST">
-            <input type="text" name="firstName" placeholder="First Name">
-            <input type="text" name="lastName" placeholder="Last Name">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="repeatPassword" placeholder="Repeate Password">
-            <input type="submit" value="Register">
+    <div class="flex-container full-screen centre direction-column">
+        <form action="/register" method="POST" class="flex-container direction-column centre">
+            <div class="form-heading-main">
+                <h1>Register</h1>
+            </div>
+
+            <input class="form-input" type="text" name="firstName" placeholder="First Name">
+            <input class="form-input" type="text" name="lastName" placeholder="Last Name">
+            <input class="form-input" type="email" name="email" placeholder="Email">
+            <input class="form-input" type="password" name="password" placeholder="Password">
+            <input class="form-input" type="password" name="repeatPassword" placeholder="Repeate Password">
+
+            <% if(locals.error) { %>
+                <p class="form-error"><%= locals.error %>!</p>
+            <% } %>
+
+            <input class="form-submit" type="submit" value="Register">
+
+            <div class="form-footer">
+                <p><span>Already have an account?</span> <a href="/login">Sign in here</a></p>
+            </div>
         </form>
-        <% if(locals.error) { %>
-            <p><%= locals.error %> </p>
-        <% } %>
     </div> 
 </body>
 </html>
