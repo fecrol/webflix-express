@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
+    <div class="flex-container full-screen centre direction-column">
+        <form action="/login" method="POST" class="flex-container direction-column centre">
+            <img src="/img/logo.png" alt="webflix logo" class="logo">
+            <div class="form-heading-main">
+                <h1>Login</h1>
+            </div>
+
+            <input class="form-input" type="email" name="email" placeholder="Email">
+            <input class="form-input" type="password" name="password" placeholder="Password">
+
+            <% if(locals.error) { %>
+                <p class="form-error"><%= locals.error %>!</p>
+            <% } %>
+
+            <input class="form-submit" type="submit" value="Login">
+
+            <div class="form-footer">
+                <a href="/">Forgotten Password?</a>
+                <p><span>New to Webflix?</span>&nbsp;&nbsp;<a href="/register">Sign up here</a></p>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
