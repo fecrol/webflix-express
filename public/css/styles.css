@@ -31,8 +31,14 @@ body {
     justify-content: center;
 }
 
+.logo {
+    max-width: 100%;
+    max-height: auto;
+    padding: 2rem;
+}
+
 .form-heading-main {
-    margin: 0;
+    margin-top: 3rem;
     padding: 0 0 2rem;
     text-align: center;
     font-size: 5rem;
@@ -59,16 +65,32 @@ form {
     color: #eeeeee;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #111111 inset !important;
+  box-shadow: 0 0 0 30px #111111 inset;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #dddddd !important;
+}
+
 .form-submit {
     width: 90%;
     padding: 1rem;
-    margin-top: 2rem;
+    margin-top: 3rem;
     font-size: 1.6rem;
     border: none;
     outline: none;
     background: #DB0000;
     color: #eeeeee;
     border-radius: 2rem;
+}
+
+.form-submit:hover {
+    cursor: pointer;
 }
 
 .form-error {
@@ -97,7 +119,6 @@ form {
     font-size: 1.2rem;
     line-height: 1.5rem;
     color: #999999;
-    padding-left: 0.2rem;
 }
 
 @media only screen and (min-width: 653px) {
